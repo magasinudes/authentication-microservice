@@ -10,4 +10,7 @@ public class AuthenticationController {
     public String index() {
         return "Greetings from Spring Boot!";
     }
+
+    @RequestMapping("/health")
+    public String health() {return "ok"; }
 }

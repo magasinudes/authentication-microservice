@@ -44,7 +44,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .regexMatchers("/*")
+                .regexMatchers("/health")
+                .permitAll()
+                .and()
+                .authorizeRequests()
+                .regexMatchers("/")
                 .authenticated()
                 .and()
                 .httpBasic()
