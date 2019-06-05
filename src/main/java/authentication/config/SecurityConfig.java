@@ -1,4 +1,4 @@
-package hello.config;
+package authentication.config;
 
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.springframework.beans.factory.annotation.Autowired;
