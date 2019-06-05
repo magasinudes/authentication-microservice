@@ -12,5 +12,11 @@ public class AuthenticationController {
     }
 
     @RequestMapping("/health")
+<<<<<<< HEAD
     public String health() {return "ok"; }
+=======
+    public String health() {
+        return "ok";
+    }
+>>>>>>> Added health point and unit test
 }
