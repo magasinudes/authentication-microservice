@@ -1,0 +1,13 @@
+language: java
+dist: trusty
+
+notifications:
+  slack: projets6-groupe:ORCe5RaXqKbVOLUtg23X66PA
+
+addons:
+  sonarcloud:
+    organization: "magasinudes" # the key of the org you chose at step #3
+    token:
+      secure: "yZGR7SUVqpjJGpHkppNaCG8uakHQsaDqrpXEHoke16iEW75gkdqCLwp4Z1v4YgMjZodTz5YJ3K5R59yyg4AYqcTCpquYUcxFp0w+otHedg6zz00rpGLf91zl7RnvO1RnGEOHvW8eNQccKxy07bhhyhf7ULX2Xi6yeH1BeAlYvuayEPTd1kxqj2X24KhM3us2u+ZWDLRH9UdTavw9SgZW5/vS2+B5ey3Ddra9qeRXMsUHfxMNdD7N3GJeaiPXfYLA0cUYfhrbA/v72j4ppJm77DnxHMhcnGc1z1QlG64D8/qVUmPM+/3qV0G0U9J7tI5m7P9wujVaLoSCi15UDFAF8bzGPIGk3f8Ys76Wp/7C1dE2BN/Pl7pM5GuwrQ9GuA6w1xyj2q7D3Av7ol6rA936VIdqyj/Gz7dj5lbh0aMjwTmUI3QwaA5EPHwi9YPurPjnInvtvGiDozLqIC3uNLE6ackYFymOvivdf1xEz2+4u/AqhuGk8yQwUPNK1zfee3r1BMN2Hzyhpxn1jqmi4hO5NuuduRTZiBnhNX1mu/ZIkBcqsONUMWarj+pVa0v7UO708Jsn+NP2IcO3P15xjlHlDT2e3ro7ZT/aXRTKydXNiuqvxcRJjwKHT2D23xsik2yWT1Ed7HJD4QVXyWg2FLRetpwdo3xCV0yGC6RbtiMiMjY="
+script:
+  - sonar-scanner
