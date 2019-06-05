@@ -12,5 +12,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping("/health")
-    public String health() {return "ok"; }
+    public String health() {
+        return "ok";
+    }
 }

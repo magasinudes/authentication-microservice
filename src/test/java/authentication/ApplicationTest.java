@@ -23,7 +23,13 @@ public class ApplicationTest {
     @Test
     public void helloGradle() throws Exception {
         mvc.perform(get("/"))
-            .andExpect(status().is3xxRedirection());
+                .andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    public void healthGradle() throws Exception {
+        mvc.perform(get("/health"))
+                .andExpect(content().string("ok"));
     }
 
 }
