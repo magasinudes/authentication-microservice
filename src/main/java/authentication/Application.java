@@ -1,4 +1,4 @@
-package hello;
+package authentication;
 
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;

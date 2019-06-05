@@ -1,4 +1,4 @@
-package hello;
+package authentication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +23,7 @@ public class ApplicationTest {
     @Test
     public void helloGradle() throws Exception {
         mvc.perform(get("/"))
-            .andExpect(status().isOk())
-            .andExpect(content().string("Greetings from Spring Boot!"));
+            .andExpect(status().is3xxRedirection());
     }
 
 }
