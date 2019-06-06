@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/magasinudes-241416/authentication-microservice:$COMMIT_SHA', '.' ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/magasinudes-241416/authentication-microservice:latest', '.' ]
+images:
+- 'gcr.io/magasinudes-241416/authentication-microservice:$COMMIT_SHA'
+- 'gcr.io/magasinudes-241416/authentication-microservice:latest'
+tags:
+- "cloudbuild"
