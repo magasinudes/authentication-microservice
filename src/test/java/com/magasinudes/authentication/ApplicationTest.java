@@ -22,7 +22,7 @@ public class ApplicationTest {
 
     @Test
     public void testRedirection() throws Exception {
-        mvc.perform(get("/"))
+        mvc.perform(get("/login"))
                 .andExpect(status().is3xxRedirection());
     }
 
