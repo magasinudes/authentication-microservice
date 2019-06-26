@@ -1,4 +1,4 @@
-package authentication;
+package com.magasinudes.authentication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,13 +21,13 @@ public class ApplicationTest {
     private MockMvc mvc;
 
     @Test
-    public void helloGradle() throws Exception {
-        mvc.perform(get("/"))
+    public void testRedirection() throws Exception {
+        mvc.perform(get("/login"))
                 .andExpect(status().is3xxRedirection());
     }
 
     @Test
-    public void healthGradle() throws Exception {
+    public void testHealth() throws Exception {
         mvc.perform(get("/health"))
                 .andExpect(content().string("ok"));
     }
