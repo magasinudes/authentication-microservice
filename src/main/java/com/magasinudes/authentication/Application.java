@@ -1,9 +1,11 @@
-package authentication;
+package com.magasinudes.authentication;
 
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;
 import org.jasig.cas.client.validation.Cas30ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpSessionEvent;
 
@@ -26,10 +29,12 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    private Logger logger = LoggerFactory.getLogger(Application.class);
+
     @Bean
     public ServiceProperties serviceProperties(){
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService("http://localhost:8080");
+        serviceProperties.setService("http://localhost:5001/login");
         serviceProperties.setSendRenew(false);
         return serviceProperties;
     }
@@ -37,6 +42,13 @@ public class Application {
     @Bean
     @Primary
     public AuthenticationEntryPoint authenticationEntryPoint(ServiceProperties sP) {
+        String frontEndUrl = System.getenv("FRONT_END_URL");
+
+        if (frontEndUrl == null) {
+            frontEndUrl =  "http://localhost:5002/login";
+        }
+        logger.error(frontEndUrl);
+
         CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
         entryPoint.setLoginUrl("https://cas.usherbrooke.ca/login");
         entryPoint.setServiceProperties(sP);

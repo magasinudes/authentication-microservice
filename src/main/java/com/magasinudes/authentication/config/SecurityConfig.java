@@ -1,4 +1,4 @@
-package authentication.config;
+package com.magasinudes.authentication.config;
 
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .regexMatchers("/")
+                .regexMatchers("/login")
                 .authenticated()
                 .and()
                 .httpBasic()
