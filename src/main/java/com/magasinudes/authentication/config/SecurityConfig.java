@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .authorizeRequests()
-                .regexMatchers("/login")
+                .regexMatchers("/")
                 .authenticated()
                 .and()
                 .httpBasic()

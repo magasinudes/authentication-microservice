@@ -34,24 +34,27 @@ public class Application {
     @Bean
     public ServiceProperties serviceProperties(){
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService("http://localhost:5001/login");
+        serviceProperties.setService("http://localhost:5002");
         serviceProperties.setSendRenew(false);
         return serviceProperties;
     }
 
     @Bean
     @Primary
-    public AuthenticationEntryPoint authenticationEntryPoint(ServiceProperties sP) {
+    public AuthenticationEntryPoint authenticationEntryPoint() {
         String frontEndUrl = System.getenv("FRONT_END_URL");
 
         if (frontEndUrl == null) {
-            frontEndUrl =  "http://localhost:5002/login";
+            frontEndUrl =  "http://localhost:5002";
         }
-        logger.error(frontEndUrl);
+
+        ServiceProperties serviceProperties = new ServiceProperties();
+        serviceProperties.setService(frontEndUrl);
+        serviceProperties.setSendRenew(false);
 
         CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
         entryPoint.setLoginUrl("https://cas.usherbrooke.ca/login");
-        entryPoint.setServiceProperties(sP);
+        entryPoint.setServiceProperties(serviceProperties);
         return entryPoint;
     }
 
